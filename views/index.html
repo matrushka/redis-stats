@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redis Stats</title>
+  <script src="/jquery.js"></script>
+  <script src="/d3.js"></script>
+  <script src="/mustache.js"></script>
+  <script src="/app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul id="tabs">
+
+  </ul>
+
+  <script type="text/html" id="template-server">
+  <div class="server" id="server-{{name}}" data-name="{{name}}">
+    <div class="menu">
+      <a href="#stats">Stats</a>
+      <a href="#memory-usage">Memory Map</a>
+    </div>
+    <div class="panel stats">
+      <ul>
+
+      </ul>
+    </div>
+    <div class="panel memory-usage">
+
+    </div>
+  </div>
+  </script>
+  <script type="text/html" id="template-error">
+  <div class="error">
+    <h1>{{statusText}}</h1>
+    <p>An error occured while trying to collect info.</p>
+  </div>
+  </script>
+  <script type="text/html" id="template-tab">
+  <li class="tab"><a data-name="{{name}}" href="">{{name}} [{{host}}:{{port}}]</a></li>
+  </script>
+  <script type="text/html" id="template-usage">
+  <li class="usage">
+    <h4 class="key">{{used}}/{{limit}}</h4>
+    <div style="width: {{percentage}}%" class="usage-bar"></div>
+  </li>
+  </script>
+  <script type="text/html" id="template-stat">
+  <li data-key="{{key}}">
+    <h4 class="key">{{key}}</h4>
+    <p class="value">{{value}}</p>
+  </li>
+  </script>
+</body>
+</html>
